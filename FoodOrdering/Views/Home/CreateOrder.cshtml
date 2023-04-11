@@ -1,0 +1,15 @@
+﻿@model Dish
+@{
+    ViewBag.Title = "Create Order";
+}
+
+<h1>New Order</h1>
+<a class="btn btn-primary" asp-action="Index">Back</a>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <label asp-for="DishName"></label>
+    <input asp-for="DishName"/>
+    <label asp-for="Quantity"></label>
+    <input asp-for="Quantity"/>
+    <button class="btn btn-success" type="submit">Create</button>
+</form>

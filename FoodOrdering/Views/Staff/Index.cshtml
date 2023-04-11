@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+@model List<OrderModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome @User.Identity.Name</h1>
+    <table class="table table-hover">
+        <tr class="p-5">
+            <th class="p-5">Order Id</th>
+            <th class="p-5">Order Date and Time</th>
+            <th class="p-5">Dishes Ordered</th>
+            <th class="p-5">Customer Email</th>
+        </tr>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderTime</td>
+                <td>
+                    @foreach (var item in order.Dishes)
+                    {
+                        @item.DishName
+                        <span>(@item.Quantity),</span>
+                    }
+                </td>
+                <td>@order.CustomerEmail</td>
+            </tr>
+        }
+    </table>
+</div>
